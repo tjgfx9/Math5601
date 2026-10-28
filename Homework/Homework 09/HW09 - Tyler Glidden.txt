@@ -1,0 +1,193 @@
+>> Homework09
+Math 5601 - Homework 09 - Tyler Glidden
+
+
+Problem 3
+
+
+
+Jacobi Method;
+
+The solution took 51 iterations.
+
+
+jacobimethodShortcut =
+
+    0.0212
+   -0.0554
+   -0.0652
+
+
+
+Gauss-Seidel Method;
+
+The solution took 100 iterations.
+
+
+gaussshort =
+
+     1
+     1
+     1
+
+
+
+Jacobi Method;
+
+The solution took 91 iterations.
+
+
+jacobimethodShortcut =
+
+    0.0018
+    0.0074
+    0.0053
+
+
+
+Gauss-Seidel Method;
+
+The solution took 100 iterations.
+
+
+gaussshort =
+
+     1
+     1
+     1
+
+
+
+Jacobi Method;
+
+The solution took 100 iterations.
+
+
+jacobimethodShortcut =
+
+   -0.0016
+   -0.0047
+   -0.0030
+
+
+
+Gauss-Seidel Method;
+
+The solution took 100 iterations.
+
+
+gaussshort =
+
+     1
+     1
+     1
+
+
+
+Jacobi Method;
+
+The solution took 100 iterations.
+
+
+jacobimethodShortcut =
+
+   -0.0016
+   -0.0047
+   -0.0030
+
+
+
+Gauss-Seidel Method;
+
+The solution took 100 iterations.
+
+
+gaussshort =
+
+     1
+     1
+     1
+
+
+
+Jacobi Method;
+
+The solution took 100 iterations.
+
+
+jacobimethodShortcut =
+
+   -0.0016
+   -0.0047
+   -0.0030
+
+
+
+Gauss-Seidel Method;
+
+The solution took 100 iterations.
+
+
+gaussshort =
+
+     1
+     1
+     1
+
+
+
+Jacobi Method;
+
+The solution took 100 iterations.
+
+
+jacobimethodShortcut =
+
+   -0.0016
+   -0.0047
+   -0.0030
+
+
+
+Gauss-Seidel Method;
+
+The solution took 100 iterations.
+
+
+gaussshort =
+
+     1
+     1
+     1
+
+
+
+
+
+
+Added later, this choice of B is diagonally dominant.
+
+
+Jacobi Method;
+
+The solution took 10 iterations.
+
+
+jacobimethodDiagDom =
+
+    0.4904
+    0.9618
+   -0.7898
+
+
+
+Gauss-Seidel Method;
+
+The solution took 7 iterations.
+
+
+gaussDiagDom =
+
+    0.4904
+    0.9618
+   -0.7898

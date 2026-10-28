@@ -1,0 +1,1374 @@
+Math 5601 - Homework 02 - Tyler Glidden
+
+>> Homework02
+Enter the number you would like to find the reciprocal of: 5
+
+xk =
+
+    0.1500
+
+
+x0 =
+
+    0.1500
+
+
+xk =
+
+    0.1875
+
+
+x0 =
+
+    0.1875
+
+
+xk =
+
+    0.1992
+
+
+x0 =
+
+    0.1992
+
+
+xk =
+
+    0.2000
+
+
+x0 =
+
+    0.2000
+
+
+xk =
+
+    0.2000
+
+
+x0 =
+
+    0.2000
+
+
+xk =
+
+    0.2000
+
+The root was found to be 2.000000e-01 after 6 iterations.
+
+
+
+
+
+
+
+
+
+The Newtons Method for x0 = 5.000000e-01: 
+
+
+xk =
+
+   -0.0796
+
+
+x0 =
+
+   -0.0796
+
+
+xk =
+
+   3.3530e-04
+
+
+x0 =
+
+   3.3530e-04
+
+
+xk =
+
+  -2.5131e-11
+
+The f tolerance has been achieved.
+
+The root was found to be -2.513147e-11 after 3 iterations.
+
+
+
+
+
+
+
+
+
+The Newtons Method for x0 = 1.000000e+00: 
+
+
+xk =
+
+   -0.5708
+
+
+x0 =
+
+   -0.5708
+
+
+xk =
+
+    0.1169
+
+
+x0 =
+
+    0.1169
+
+
+xk =
+
+   -0.0011
+
+
+x0 =
+
+   -0.0011
+
+
+xk =
+
+   7.9631e-10
+
+
+x0 =
+
+   7.9631e-10
+
+
+xk =
+
+     0
+
+The f tolerance has been achieved.
+
+The root was found to be 0.000000e+00 after 5 iterations.
+
+
+
+
+
+
+
+
+
+The Newtons Method for x0 = 1.300000e+00: 
+
+
+xk =
+
+   -1.1616
+
+
+x0 =
+
+   -1.1616
+
+
+xk =
+
+    0.8589
+
+
+x0 =
+
+    0.8589
+
+
+xk =
+
+   -0.3742
+
+
+x0 =
+
+   -0.3742
+
+
+xk =
+
+    0.0340
+
+
+x0 =
+
+    0.0340
+
+
+xk =
+
+  -2.6240e-05
+
+
+x0 =
+
+  -2.6240e-05
+
+
+xk =
+
+   1.2045e-14
+
+The f tolerance has been achieved.
+
+The root was found to be 1.204517e-14 after 6 iterations.
+
+
+
+
+
+
+
+
+
+The Newtons Method for x0 = 1.400000e+00: 
+
+
+xk =
+
+   -1.4136
+
+
+x0 =
+
+   -1.4136
+
+
+xk =
+
+    1.4501
+
+
+x0 =
+
+    1.4501
+
+
+xk =
+
+   -1.5506
+
+
+x0 =
+
+   -1.5506
+
+
+xk =
+
+    1.8471
+
+
+x0 =
+
+    1.8471
+
+
+xk =
+
+   -2.8936
+
+
+x0 =
+
+   -2.8936
+
+
+xk =
+
+    8.7103
+
+
+x0 =
+
+    8.7103
+
+
+xk =
+
+ -103.2498
+
+
+x0 =
+
+ -103.2498
+
+
+xk =
+
+   1.6541e+04
+
+
+x0 =
+
+   1.6541e+04
+
+
+xk =
+
+  -4.2972e+08
+
+The df tolerance has been achieved.
+
+The root was found to be -4.297215e+08 after 9 iterations.
+
+
+
+
+
+
+
+
+
+The Newtons Method for x0 = 1.350000e+00: 
+
+
+xk =
+
+   -1.2841
+
+
+x0 =
+
+   -1.2841
+
+
+xk =
+
+    1.1241
+
+
+x0 =
+
+    1.1241
+
+
+xk =
+
+   -0.7859
+
+
+x0 =
+
+   -0.7859
+
+
+xk =
+
+    0.2916
+
+
+x0 =
+
+    0.2916
+
+
+xk =
+
+   -0.0163
+
+
+x0 =
+
+   -0.0163
+
+
+xk =
+
+   2.8611e-06
+
+
+x0 =
+
+   2.8611e-06
+
+
+xk =
+
+  -1.5613e-17
+
+The f tolerance has been achieved.
+
+The root was found to be -1.561293e-17 after 7 iterations.
+
+
+
+
+
+
+
+
+
+The Newtons Method for x0 = 1.375000e+00: 
+
+
+xk =
+
+   -1.3480
+
+
+x0 =
+
+   -1.3480
+
+
+xk =
+
+    1.2790
+
+
+x0 =
+
+    1.2790
+
+
+xk =
+
+   -1.1122
+
+
+x0 =
+
+   -1.1122
+
+
+xk =
+
+    0.7635
+
+
+x0 =
+
+    0.7635
+
+
+xk =
+
+   -0.2687
+
+
+x0 =
+
+   -0.2687
+
+
+xk =
+
+    0.0128
+
+
+x0 =
+
+    0.0128
+
+
+xk =
+
+  -1.3822e-06
+
+
+x0 =
+
+  -1.3822e-06
+
+
+xk =
+
+   1.7603e-18
+
+The f tolerance has been achieved.
+
+The root was found to be 1.760346e-18 after 8 iterations.
+
+
+
+
+
+
+
+
+
+The Newtons Method for x0 = 1.387500e+00: 
+
+
+xk =
+
+   -1.3806
+
+
+x0 =
+
+   -1.3806
+
+
+xk =
+
+    1.3624
+
+
+x0 =
+
+    1.3624
+
+
+xk =
+
+   -1.3157
+
+
+x0 =
+
+   -1.3157
+
+
+xk =
+
+    1.1993
+
+
+x0 =
+
+    1.1993
+
+
+xk =
+
+   -0.9360
+
+
+x0 =
+
+   -0.9360
+
+
+xk =
+
+    0.4755
+
+
+x0 =
+
+    0.4755
+
+
+xk =
+
+   -0.0687
+
+
+x0 =
+
+   -0.0687
+
+
+xk =
+
+   2.1609e-04
+
+
+x0 =
+
+   2.1609e-04
+
+
+xk =
+
+  -6.7269e-12
+
+The f tolerance has been achieved.
+
+The root was found to be -6.726856e-12 after 9 iterations.
+
+
+
+
+
+
+
+
+
+The Newtons Method for x0 = 1.393750e+00: 
+
+
+xk =
+
+   -1.3970
+
+
+x0 =
+
+   -1.3970
+
+
+xk =
+
+    1.4058
+
+
+x0 =
+
+    1.4058
+
+
+xk =
+
+   -1.4290
+
+
+x0 =
+
+   -1.4290
+
+
+xk =
+
+    1.4919
+
+
+x0 =
+
+    1.4919
+
+
+xk =
+
+   -1.6704
+
+
+x0 =
+
+   -1.6704
+
+
+xk =
+
+    2.2387
+
+
+x0 =
+
+    2.2387
+
+
+xk =
+
+   -4.6790
+
+
+x0 =
+
+   -4.6790
+
+
+xk =
+
+   26.4606
+
+
+x0 =
+
+   26.4606
+
+
+xk =
+
+  -1.0484e+03
+
+
+x0 =
+
+  -1.0484e+03
+
+
+xk =
+
+   1.7246e+06
+
+The df tolerance has been achieved.
+
+The root was found to be 1.724564e+06 after 10 iterations.
+
+
+
+
+
+
+
+
+
+The Newtons Method for x0 = 1.390625e+00: 
+
+
+xk =
+
+   -1.3888
+
+
+x0 =
+
+   -1.3888
+
+
+xk =
+
+    1.3840
+
+
+x0 =
+
+    1.3840
+
+
+xk =
+
+   -1.3713
+
+
+x0 =
+
+   -1.3713
+
+
+xk =
+
+    1.3384
+
+
+x0 =
+
+    1.3384
+
+
+xk =
+
+   -1.2551
+
+
+x0 =
+
+   -1.2551
+
+
+xk =
+
+    1.0577
+
+
+x0 =
+
+    1.0577
+
+
+xk =
+
+   -0.6657
+
+
+x0 =
+
+   -0.6657
+
+
+xk =
+
+    0.1819
+
+
+x0 =
+
+    0.1819
+
+
+xk =
+
+   -0.0040
+
+
+x0 =
+
+   -0.0040
+
+
+xk =
+
+   4.2232e-08
+
+
+x0 =
+
+   4.2232e-08
+
+
+xk =
+
+  -4.6322e-23
+
+The f tolerance has been achieved.
+
+The root was found to be -4.632211e-23 after 11 iterations.
+
+
+
+
+
+
+
+
+
+The Newtons Method for x0 = 1.392187e+00: 
+
+
+xk =
+
+   -1.3929
+
+
+x0 =
+
+   -1.3929
+
+
+xk =
+
+    1.3948
+
+
+x0 =
+
+    1.3948
+
+
+xk =
+
+   -1.3999
+
+
+x0 =
+
+   -1.3999
+
+
+xk =
+
+    1.4133
+
+
+x0 =
+
+    1.4133
+
+
+xk =
+
+   -1.4493
+
+
+x0 =
+
+   -1.4493
+
+
+xk =
+
+    1.5483
+
+
+x0 =
+
+    1.5483
+
+
+xk =
+
+   -1.8399
+
+
+x0 =
+
+   -1.8399
+
+
+xk =
+
+    2.8654
+
+
+x0 =
+
+    2.8654
+
+
+xk =
+
+   -8.5099
+
+
+x0 =
+
+   -8.5099
+
+
+xk =
+
+   98.2280
+
+
+x0 =
+
+   98.2280
+
+
+xk =
+
+  -1.4961e+04
+
+
+x0 =
+
+  -1.4961e+04
+
+
+xk =
+
+   3.5158e+08
+
+The df tolerance has been achieved.
+
+The root was found to be 3.515790e+08 after 12 iterations.
+
+
+
+
+
+
+
+
+
+The Secant Method for x0 = 5.000000e-01, x1 = 1.000000e+00: 
+
+
+xkm1 =
+
+    0.4636
+
+
+xk =
+
+   -0.2205
+
+
+x0 =
+
+     1
+
+
+x1 =
+
+   -0.2205
+
+
+xk =
+
+    0.0437
+
+
+x0 =
+
+   -0.2205
+
+
+x1 =
+
+    0.0437
+
+
+xk =
+
+  -5.5908e-04
+
+
+x0 =
+
+    0.0437
+
+
+x1 =
+
+  -5.5908e-04
+
+
+xk =
+
+   3.5183e-07
+
+
+x0 =
+
+  -5.5908e-04
+
+
+x1 =
+
+   3.5183e-07
+
+
+xk =
+
+  -3.6634e-14
+
+The f tolerance has been achieved.
+
+The root was found to be -3.663402e-14 after 6 iterations.
+
+
+
+
+
+
+
+
+
+The Secant Method for x0 = 1.000000e+00, x1 = 1.300000e+00: 
+
+
+xkm1 =
+
+    0.7854
+
+
+xk =
+
+   -0.8166
+
+
+x0 =
+
+    1.3000
+
+
+x1 =
+
+   -0.8166
+
+
+xk =
+
+    0.0893
+
+
+x0 =
+
+   -0.8166
+
+
+x1 =
+
+    0.0893
+
+
+xk =
+
+   -0.0150
+
+
+x0 =
+
+    0.0893
+
+
+x1 =
+
+   -0.0150
+
+
+xk =
+
+   3.3071e-05
+
+
+x0 =
+
+   -0.0150
+
+
+x1 =
+
+   3.3071e-05
+
+
+xk =
+
+  -2.4645e-09
+
+
+x0 =
+
+   3.3071e-05
+
+
+x1 =
+
+  -2.4645e-09
+
+
+xk =
+
+   8.9838e-19
+
+The f tolerance has been achieved.
+
+The root was found to be 8.983814e-19 after 7 iterations.
+
+
+
+
+
+
+
+
+
+The Secant Method for x0 = 1.400000e+00, x1 = 1.500000e+00: 
+
+
+xkm1 =
+
+    0.9505
+
+
+xk =
+
+   -1.5477
+
+
+x0 =
+
+    1.5000
+
+
+x1 =
+
+   -1.5477
+
+
+xk =
+
+   -0.0128
+
+
+x0 =
+
+   -1.5477
+
+
+x1 =
+
+   -0.0128
+
+
+xk =
+
+    0.0072
+
+
+x0 =
+
+   -0.0128
+
+
+x1 =
+
+    0.0072
+
+
+xk =
+
+  -1.7241e-07
+
+
+x0 =
+
+    0.0072
+
+
+x1 =
+
+  -1.7241e-07
+
+
+xk =
+
+   2.9457e-12
+
+The f tolerance has been achieved.
+
+The root was found to be 2.945705e-12 after 6 iterations.
+
+
+
+
+
+
+
+
+
+The Secant Method for x0 = 1.000000e+01, x1 = 1.100000e+01: 
+
+
+xkm1 =
+
+    1.4711
+
+
+xk =
+
+ -153.2996
+
+
+x0 =
+
+    11
+
+
+x1 =
+
+ -153.2996
+
+
+xk =
+
+  -68.8795
+
+
+x0 =
+
+ -153.2996
+
+
+x1 =
+
+  -68.8795
+
+
+xk =
+
+   1.6366e+04
+
+
+x0 =
+
+  -68.8795
+
+
+x1 =
+
+   1.6366e+04
+
+
+xk =
+
+   8.1106e+03
+
+
+x0 =
+
+   1.6366e+04
+
+
+x1 =
+
+   8.1106e+03
+
+
+xk =
+
+  -2.0848e+08
+
+
+x0 =
+
+   8.1106e+03
+
+
+x1 =
+
+  -2.0848e+08
+
+
+xk =
+
+  -1.0423e+08
+
+
+x0 =
+
+  -2.0848e+08
+
+
+x1 =
+
+  -1.0423e+08
+
+
+xk =
+
+   3.4134e+16
+
+
+x0 =
+
+  -1.0423e+08
+
+
+x1 =
+
+   3.4134e+16
+
+
+xk =
+
+   1.7067e+16
+
+
+x0 =
+
+   3.4134e+16
+
+
+x1 =
+
+   1.7067e+16
+
+
+xk =
+
+   Inf
+
+
+x0 =
+
+   1.7067e+16
+
+
+x1 =
+
+   Inf
+
+
+xk =
+
+   NaN
+
+The root was found to be NaN after 11 iterations.

@@ -1,0 +1,532 @@
+\documentclass[11pt, letterpaper]{article}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath, amssymb}
+\usepackage{booktabs}
+\usepackage[margin=1in]{geometry}
+\usepackage{array}
+\usepackage{float}
+\usepackage{algorithm, algpseudocode}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage[section]{placeins}  % keep floats inside sections
+
+% Compact spacing adjustments
+\setstretch{1.05}
+\titlespacing*{\section}{0pt}{0.7em}{0.5em}
+\setlength{\parskip}{0.2em}
+\setlength{\parindent}{0pt}
+
+% Float tuning so tables are not pushed to the end
+\setcounter{topnumber}{10}
+\setcounter{bottomnumber}{10}
+\setcounter{totalnumber}{20}
+\renewcommand{\topfraction}{0.95}
+\renewcommand{\bottomfraction}{0.95}
+\renewcommand{\textfraction}{0.05}
+\renewcommand{\floatpagefraction}{0.9}
+
+% Define a custom column type for fixed-width data
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+\begin{document}
+
+\begin{center}
+    \Large\textbf{Math 5601 - Independent Study Report} \\[0.5em]
+    \normalsize
+    \textbf{Tyler Glidden}\\[0.3em]
+    \textbf{Proposed Topic:} \textit{Adaptive Quadrature Methods for Numerical Integration}
+\end{center}
+
+% ==========================================
+% SECTION 1: LITERATURE REVIEW
+% ==========================================
+\section{Literature Review}
+
+\vspace{3cm}
+
+
+
+% ==========================================
+% SECTION 2: ALGORITHM ANALYSIS
+% ==========================================
+\section{Algorithm Analysis: Adaptive Numerical Integration}
+
+\subsection*{General Framework}
+Branching, bounding, stopping.
+
+\subsection*{Initialization}
+\begin{enumerate}
+    \setlength\itemsep{0.2em}
+    \item Initialize sum accumulator \( X \gets 0 \)
+    \item Initialize iteration count \( k \gets 0 \)
+    \item Initialize good intervals \( \text{goodIntervals} \gets [\,] \)
+    \item Initialize test intervals \( \text{testIntervals} \gets [a, b] \)
+    \item Define total tolerance \( \epsilon \)
+    \item Define smallest bound \( \delta \gets \max(\epsilon / 10^k, h_{\min}) \)
+\end{enumerate}
+
+\subsection*{Adaptive Integration Algorithm}
+\begin{algorithm}[H]
+\small
+\begin{algorithmic}
+\While{$\text{testIntervals}$ not empty}
+    \State $(\text{left}, \text{right}) \gets$ first interval in $\text{testIntervals}$
+    \State $\text{mid} \gets (\text{left} + \text{right}) / 2$
+    \State $\text{S}_1 \gets$ SIMPLE($[\text{left}, \text{mid}]$)
+    \State $\text{S}_2 \gets$ SIMPLE($[\text{mid}, \text{right}]$)
+    \State $\text{S}  \gets$ SIMPLE($[\text{left}, \text{right}]$)
+    \State $k \gets k + 1$
+    \State $\epsilon_k \gets \epsilon \cdot \frac{\text{right}-\text{left}}{b-a}$
+    \If{$|\text{S}_1+\text{S}_2-\text{S}| \le 15\epsilon_k$}
+        \State Add interval to $\text{goodIntervals}$
+        \State $X \gets X + \text{S}_1 + \text{S}_2$
+        \State Remove interval from $\text{testIntervals}$
+    \Else
+        \State $h \gets \text{right}-\text{left}$
+        \If{$h > \delta$}
+            \State Replace $[\text{left},\text{right}]$ with $[\text{left},\text{mid}]$ and $[\text{mid},\text{right}]$
+        \Else
+            \State $X \gets $X + \text{S}$
+            \State Remove interval (warn: tolerance not met)
+        \EndIf
+    \EndIf
+\EndWhile
+\State \Return $X$
+\end{algorithmic}
+\end{algorithm}
+
+% ==========================================
+% SECTION 3: IMPLEMENTATION
+% ==========================================
+\section{Implementation}
+
+\vspace{3cm}
+
+
+
+% ==========================================
+% SECTION 4: TESTING AND EVALUATION
+% ==========================================
+\section{Testing and Evaluation}
+
+% ---- Smooth function ----
+\subsection{Integration of Smooth Function: $f(x) = \sin(x)$ on $[0, 1]$}
+
+\noindent
+\textbf{Exact Value ($J_F$):} \rule{6cm}{0.4pt} \\
+\textbf{Parameters:} $a=0$, $b=1$. Adaptive tolerance: $\epsilon = \delta = 10^{-10}$.
+
+\begin{table}[H] 
+    \centering
+    \caption{Results for Smooth Function $f(x) = \sin(x)$}
+    \label{tab:smooth}
+    \begin{tabular}{@{} l c C{4cm} C{4cm} @{}}
+        \toprule
+        \textbf{Method} & \textbf{N / Type} & \textbf{$I_{\text{approx}}$ (Approximate Value)} & \textbf{$|E|$ (Absolute Error)} \\
+        \midrule
+        \text{Simple Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Simple 3/8 Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Composite Integration (Fixed $N$)}} \\
+        \cmidrule{1-4}
+        \text{Composite: Step $N=5$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=10$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=20$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=50$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Adaptive Integration (Tolerance $\epsilon = \delta = 10^{-10}$)}} \\
+        \cmidrule{1-4}
+        \text{Adaptive Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Adaptive 3/8 Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\FloatBarrier
+
+% ---- Rapid function ----
+\subsection{Integration of Rapidly Changing Function: $f(x) = \frac{1}{1+100x}$ on $[0, 1]$}
+
+\noindent
+\textbf{Exact Value ($J_F$):} \rule{6cm}{0.4pt} \\
+\textbf{Parameters:} $a=0$, $b=1$. Adaptive tolerance: $\epsilon = \delta = 10^{-10}$.
+
+\begin{table}[H]
+    \centering
+    \caption{Results for Rapidly Changing Function $f(x) = 1/(1+100x)$}
+    \label{tab:rapid}
+    \begin{tabular}{@{} l c C{4cm} C{4cm} @{}}
+        \toprule
+        \textbf{Method} & \textbf{N / Type} & \textbf{$I_{\text{approx}}$ (Approximate Value)} & \textbf{$|E|$ (Absolute Error)} \\
+        \midrule
+        \text{Simple Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Simple 3/8 Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Composite Integration (Fixed $N$)}} \\
+        \cmidrule{1-4}
+        \text{Composite: Step $N=5$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=10$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=20$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=50$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Adaptive Integration (Tolerance $\epsilon = \delta = 10^{-10}$)}} \\
+        \cmidrule{1-4}
+        \text{Adaptive Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Adaptive 3/8 Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\FloatBarrier
+
+% ---- Unsmooth function ----
+\subsection{Integration of Locally Unsmooth Function: $f(x) = \sqrt{x^2+A}$}
+
+\noindent
+\textbf{Parameters:} $a=-1$, $b=1$. \\
+The table below tracks the error as parameter $A$ shrinks from $10^{-1}$ to $10^{-10}$.
+
+% A = 10^{-1}
+\vspace{1cm}
+For $A = 10^{-1}$\\
+\textbf{Exact Value ($J_F$):} \rule{3cm}{0.4pt} \\
+
+\begin{table}[H]
+    \centering
+    \caption{Results for Locally Unsmooth Function $f(x) = \sqrt{x^2+A}$, $A=10^{-1}$}
+    \label{tab:unsmooth1}
+    \begin{tabular}{@{} l c C{4cm} C{4cm} @{}}
+        \toprule
+        \textbf{Method} & \textbf{N / Type} & \textbf{$I_{\text{approx}}$ (Approximate Value)} & \textbf{$|E|$ (Absolute Error)} \\
+        \midrule
+        \text{Simple Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Simple 3/8 Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Composite Integration (Fixed $N$)}} \\
+        \cmidrule{1-4}
+        \text{Composite: Step $N=5$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=10$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=20$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=50$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Adaptive Integration (Tolerance $\epsilon = \delta = 10^{-10}$)}} \\
+        \cmidrule{1-4}
+        \text{Adaptive Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Adaptive 3/8 Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\FloatBarrier
+
+% A = 10^{-2}
+\vspace{1cm}
+For $A = 10^{-2}$\\
+\textbf{Exact Value ($J_F$):} \rule{3cm}{0.4pt} \\
+
+\begin{table}[H]
+    \centering
+    \caption{Results for Locally Unsmooth Function $f(x) = \sqrt{x^2+A}$, $A=10^{-2}$}
+    \label{tab:unsmooth2}
+    \begin{tabular}{@{} l c C{4cm} C{4cm} @{}}
+        \toprule
+        \textbf{Method} & \textbf{N / Type} & \textbf{$I_{\text{approx}}$ (Approximate Value)} & \textbf{$|E|$ (Absolute Error)} \\
+        \midrule
+        \text{Simple Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Simple 3/8 Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Composite Integration (Fixed $N$)}} \\
+        \cmidrule{1-4}
+        \text{Composite: Step $N=5$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=10$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=20$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=50$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Adaptive Integration (Tolerance $\epsilon = \delta = 10^{-10}$)}} \\
+        \cmidrule{1-4}
+        \text{Adaptive Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Adaptive 3/8 Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\FloatBarrier
+
+% A = 10^{-3}
+\vspace{1cm}
+For $A = 10^{-3}$\\
+\textbf{Exact Value ($J_F$):} \rule{3cm}{0.4pt} \\
+
+\begin{table}[H]
+    \centering
+    \caption{Results for Locally Unsmooth Function $f(x) = \sqrt{x^2+A}$, $A=10^{-3}$}
+    \label{tab:unsmooth3}
+    \begin{tabular}{@{} l c C{4cm} C{4cm} @{}}
+        \toprule
+        \textbf{Method} & \textbf{N / Type} & \textbf{$I_{\text{approx}}$ (Approximate Value)} & \textbf{$|E|$ (Absolute Error)} \\
+        \midrule
+        \text{Simple Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Simple 3/8 Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Composite Integration (Fixed $N$)}} \\
+        \cmidrule{1-4}
+        \text{Composite: Step $N=5$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=10$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=20$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=50$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Adaptive Integration (Tolerance $\epsilon = \delta = 10^{-10}$)}} \\
+        \cmidrule{1-4}
+        \text{Adaptive Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Adaptive 3/8 Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\FloatBarrier
+
+% A = 10^{-4}
+\vspace{1cm}
+For $A = 10^{-4}$\\
+\textbf{Exact Value ($J_F$):} \rule{3cm}{0.4pt} \\
+
+\begin{table}[H]
+    \centering
+    \caption{Results for Locally Unsmooth Function $f(x) = \sqrt{x^2+A}$, $A=10^{-4}$}
+    \label{tab:unsmooth4}
+    \begin{tabular}{@{} l c C{4cm} C{4cm} @{}}
+        \toprule
+        \textbf{Method} & \textbf{N / Type} & \textbf{$I_{\text{approx}}$ (Approximate Value)} & \textbf{$|E|$ (Absolute Error)} \\
+        \midrule
+        \text{Simple Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Simple 3/8 Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Composite Integration (Fixed $N$)}} \\
+        \cmidrule{1-4}
+        \text{Composite: Step $N=5$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=10$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=20$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=50$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Adaptive Integration (Tolerance $\epsilon = \delta = 10^{-10}$)}} \\
+        \cmidrule{1-4}
+        \text{Adaptive Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Adaptive 3/8 Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\FloatBarrier
+
+% A = 10^{-5}
+\vspace{1cm}
+For $A = 10^{-5}$\\
+\textbf{Exact Value ($J_F$):} \rule{3cm}{0.4pt} \\
+
+\begin{table}[H]
+    \centering
+    \caption{Results for Locally Unsmooth Function $f(x) = \sqrt{x^2+A}$, $A=10^{-5}$}
+    \label{tab:unsmooth5}
+    \begin{tabular}{@{} l c C{4cm} C{4cm} @{}}
+        \toprule
+        \textbf{Method} & \textbf{N / Type} & \textbf{$I_{\text{approx}}$ (Approximate Value)} & \textbf{$|E|$ (Absolute Error)} \\
+        \midrule
+        \text{Simple Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Simple 3/8 Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Composite Integration (Fixed $N$)}} \\
+        \cmidrule{1-4}
+        \text{Composite: Step $N=5$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=10$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=20$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=50$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Adaptive Integration (Tolerance $\epsilon = \delta = 10^{-10}$)}} \\
+        \cmidrule{1-4}
+        \text{Adaptive Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Adaptive 3/8 Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\FloatBarrier
+
+% A = 10^{-6}
+\vspace{1cm}
+For $A = 10^{-6}$\\
+\textbf{Exact Value ($J_F$):} \rule{3cm}{0.4pt} \\
+
+\begin{table}[H]
+    \centering
+    \caption{Results for Locally Unsmooth Function $f(x) = \sqrt{x^2+A}$, $A=10^{-6}$}
+    \label{tab:unsmooth6}
+    \begin{tabular}{@{} l c C{4cm} C{4cm} @{}}
+        \toprule
+        \textbf{Method} & \textbf{N / Type} & \textbf{$I_{\text{approx}}$ (Approximate Value)} & \textbf{$|E|$ (Absolute Error)} \\
+        \midrule
+        \text{Simple Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Simple 3/8 Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Composite Integration (Fixed $N$)}} \\
+        \cmidrule{1-4}
+        \text{Composite: Step $N=5$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=10$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=20$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=50$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Adaptive Integration (Tolerance $\epsilon = \delta = 10^{-10}$)}} \\
+        \cmidrule{1-4}
+        \text{Adaptive Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Adaptive 3/8 Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\FloatBarrier
+
+% A = 10^{-7}
+\vspace{1cm}
+For $A = 10^{-7}$\\
+\textbf{Exact Value ($J_F$):} \rule{3cm}{0.4pt} \\
+
+\begin{table}[H]
+    \centering
+    \caption{Results for Locally Unsmooth Function $f(x) = \sqrt{x^2+A}$, $A=10^{-7}$}
+    \label{tab:unsmooth7}
+    \begin{tabular}{@{} l c C{4cm} C{4cm} @{}}
+        \toprule
+        \textbf{Method} & \textbf{N / Type} & \textbf{$I_{\text{approx}}$ (Approximate Value)} & \textbf{$|E|$ (Absolute Error)} \\
+        \midrule
+        \text{Simple Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Simple 3/8 Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Composite Integration (Fixed $N$)}} \\
+        \cmidrule{1-4}
+        \text{Composite: Step $N=5$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=10$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=20$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=50$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Adaptive Integration (Tolerance $\epsilon = \delta = 10^{-10}$)}} \\
+        \cmidrule{1-4}
+        \text{Adaptive Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Adaptive 3/8 Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\FloatBarrier
+
+% A = 10^{-8}
+\vspace{1cm}
+For $A = 10^{-8}$\\
+\textbf{Exact Value ($J_F$):} \rule{3cm}{0.4pt} \\
+
+\begin{table}[H]
+    \centering
+    \caption{Results for Locally Unsmooth Function $f(x) = \sqrt{x^2+A}$, $A=10^{-8}$}
+    \label{tab:unsmooth8}
+    \begin{tabular}{@{} l c C{4cm} C{4cm} @{}}
+        \toprule
+        \textbf{Method} & \textbf{N / Type} & \textbf{$I_{\text{approx}}$ (Approximate Value)} & \textbf{$|E|$ (Absolute Error)} \\
+        \midrule
+        \text{Simple Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Simple 3/8 Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Composite Integration (Fixed $N$)}} \\
+        \cmidrule{1-4}
+        \text{Composite: Step $N=5$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=10$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=20$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=50$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Adaptive Integration (Tolerance $\epsilon = \delta = 10^{-10}$)}} \\
+        \cmidrule{1-4}
+        \text{Adaptive Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Adaptive 3/8 Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\FloatBarrier
+
+% A = 10^{-9}
+\vspace{1cm}
+For $A = 10^{-9}$\\
+\textbf{Exact Value ($J_F$):} \rule{3cm}{0.4pt} \\
+
+\begin{table}[H]
+    \centering
+    \caption{Results for Locally Unsmooth Function $f(x) = \sqrt{x^2+A}$, $A=10^{-9}$}
+    \label{tab:unsmooth9}
+    \begin{tabular}{@{} l c C{4cm} C{4cm} @{}}
+        \toprule
+        \textbf{Method} & \textbf{N / Type} & \textbf{$I_{\text{approx}}$ (Approximate Value)} & \textbf{$|E|$ (Absolute Error)} \\
+        \midrule
+        \text{Simple Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Simple 3/8 Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Composite Integration (Fixed $N$)}} \\
+        \cmidrule{1-4}
+        \text{Composite: Step $N=5$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=10$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=20$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=50$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Adaptive Integration (Tolerance $\epsilon = \delta = 10^{-10}$)}} \\
+        \cmidrule{1-4}
+        \text{Adaptive Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Adaptive 3/8 Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\FloatBarrier
+
+% A = 10^{-10}
+\vspace{1cm}
+For $A = 10^{-10}$\\
+\textbf{Exact Value ($J_F$):} \rule{3cm}{0.4pt} \\
+
+\begin{table}[H]
+    \centering
+    \caption{Results for Locally Unsmooth Function $f(x) = \sqrt{x^2+A}$, $A=10^{-10}$}
+    \label{tab:unsmooth10}
+    \begin{tabular}{@{} l c C{4cm} C{4cm} @{}}
+        \toprule
+        \textbf{Method} & \textbf{N / Type} & \textbf{$I_{\text{approx}}$ (Approximate Value)} & \textbf{$|E|$ (Absolute Error)} \\
+        \midrule
+        \text{Simple Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Simple 3/8 Simpsons Rule} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Composite Integration (Fixed $N$)}} \\
+        \cmidrule{1-4}
+        \text{Composite: Step $N=5$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=10$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=20$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Composite: Step $N=50$} &  & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \midrule
+        \multicolumn{4}{l}{\textbf{Adaptive Integration (Tolerance $\epsilon = \delta = 10^{-10}$)}} \\
+        \cmidrule{1-4}
+        \text{Adaptive Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \text{Adaptive 3/8 Simpsons Rule} & $N_{\text{final}}$: \rule{1.5cm}{0.4pt} & \rule{4cm}{0.4pt} & \rule{4cm}{0.4pt} \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\FloatBarrier
+
+
+
+% ==========================================
+% SECTION 5: ANALYSIS AND DISCUSSION
+% ==========================================
+\section{Analysis and Discussion}
+
+\vspace{3cm}
+
+
+
+\end{document}

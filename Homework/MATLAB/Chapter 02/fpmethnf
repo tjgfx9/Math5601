@@ -1,0 +1,40 @@
+function root=fpmeth(f,)
+
+x0=0;
+etol=0;
+ef=0;
+a=0;
+b=0;
+ak=0;
+bk=0;
+xk=0;
+M=0;
+k=0;
+
+etol=0.01;
+ef=0.000001;
+M=100;
+x0 = 0.5;
+
+% Initialize iteration counter and error
+k = 1;
+xk = g(x0);
+
+while k<=M-1 && abs(xk-x0)>=etol
+    % Compute the new guess using the function g
+    % Check for convergence
+    if abs(g(xk) - xk) < ef
+        break;
+    end
+    x0 = xk; % Update the previous guess
+    xk = g(x0);
+    k = k + 1; % Increment the iteration counter
+end
+
+if k == M
+    fprintf('Maximum iterations reached without convergence.\n');
+end
+
+if k<M
+    fprintf('Converged to %f after %d iterations\n', xk, k);
+end

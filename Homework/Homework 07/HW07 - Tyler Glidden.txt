@@ -1,0 +1,30 @@
+Homework07
+Math 5601 - Homework 07 - Tyler Glidden
+
+
+Problem 1
+
+
+Equation solved.
+
+fsolve completed because the vector of function values is near zero
+as measured by the value of the function tolerance, and
+the problem appears regular as measured by the gradient.
+
+<stopping criteria details>
+
+x =
+
+    0.5556    0.8889    0.5556   -0.7746   -0.0000    0.7746
+
+
+
+
+Problem 3
+
+
+x =
+
+    0.5000
+   -4.0000
+    4.5000

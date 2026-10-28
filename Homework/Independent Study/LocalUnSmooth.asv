@@ -1,0 +1,40 @@
+format long
+xaproxlocalunsmooth=zeros(8,10);
+errorlocalunsmooth=zeros(8,10);
+JFunsmooth=zeros(1,10);
+a=-1;
+b=1;
+eps=10^-10;
+delta=10^-10;
+steps=[5,10,20,50];
+for i=1:10
+    small=10^-i;
+    fprintf('\n\n\n\n\nf(x) = sqrt(x^2+%d)\n\n',small)
+    f=@(x) sqrt(x^2+small);
+    j = @(x) 0.5 * ( x .* sqrt(x.^2 + small) + small .* log( x + sqrt(x.^2 + small) ) );
+    actual=j(b)-j(a);
+    JFunsmooth(i)=actual;
+    xaproxlocalunsmooth(1,i)=simpsons(a,b,f);
+    xaproxlocalunsmooth(2,i)=problemD(a,b,f);
+    for j=1:size(steps,2)
+        xaproxlocalunsmooth(j+2,i)=compositeintegration(f,a,b,steps(j));
+    end
+    for n=1:size(steps,2)
+        xaproxlocalunsmooth(n+6,i) = composite38integration(f,a,b,steps(n))
+    end
+    xaproxlocalunsmooth(11,i)=simpsons_adaptiveintegration(f,a,b,eps,delta);
+    xaproxlocalunsmooth(12,i)=simpsons38_adaptiveintegration(f,a,b,eps,delta);
+    errorlocalunsmooth(1,i) = abs(JFunsmooth(i) - xaproxlocalunsmooth(1,i));
+    errorlocalunsmooth(2,i) = abs(JFunsmooth(i) - xaproxlocalunsmooth(2,i));
+    for l=1:size(steps,2)
+        errorlocalunsmooth(l+2,i) = abs(JFunsmooth(i) - xaproxlocalunsmooth(l+2,i));
+    end
+    for p=1:size(steps,2)
+        
+    errorlocalunsmooth(11,i) = abs(JFunsmooth(i) - xaproxlocalunsmooth(11,i));
+    errorlocalunsmooth(12,i) = abs(JFunsmooth(i) - xaproxlocalunsmooth(12,i));
+end
+
+JFunsmooth
+xaproxlocalunsmooth
+errorlocalunsmooth

@@ -1,0 +1,36 @@
+Homework06
+Math 5601 - Homework 06
+
+
+Problem 3
+
+
+For middle point rule:
+
+Q(f)=0.448342
+
+E(f)=0.079052
+
+
+
+For two point open rule:
+
+Q(f)=0.472034
+
+E(f)=0.055359
+
+
+
+For Simpson's rule:
+
+Q(f)=0.534597
+
+E(f)=0.007204
+
+
+
+For the given Q(f) in Part d:
+
+Q(f)=0.530802
+
+E(f)=0.003409

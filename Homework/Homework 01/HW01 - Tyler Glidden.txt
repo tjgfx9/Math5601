@@ -1,0 +1,151 @@
+Math 5601 - Homework 01 - Tyler Glidden
+
+> HW01P01
+The function is f(x)=arctan(x)
+
+
+
+
+
+The epsilon is 10^-2
+
+The root was found to be -7.421875e-03 after 9 iterations. The error is within 1.000000e-02
+
+
+The epsilon is 10^-4
+
+The root was found to be -2.136230e-05 after 16 iterations. The error is within 1.000000e-04
+
+
+The epsilon is 10^-8
+
+The root was found to be -7.078052e-09 after 29 iterations. The error is within 1.000000e-08
+
+
+>> HW01P02
+
+
+
+Fixed point method for x-arctan(x).
+The first guess for x0 = 5 gives x1=g(x0), x1 = 3.626599e+00
+For iteration 1 xk is 3.626599e+00 and f(xk) is 2.324857e+00.
+
+For iteration 2 xk is 2.324857e+00 and f(xk) is 1.160272e+00.
+
+For iteration 3 xk is 1.160272e+00 and f(xk) is 3.008189e-01.
+
+For iteration 4 xk is 3.008189e-01 and f(xk) is 8.610991e-03.
+
+For iteration 5 xk is 8.610991e-03 and f(xk) is 2.128231e-07.
+
+For iteration 6 xk is 2.128231e-07 and f(xk) is 3.202843e-21.
+
+For iteration 7 xk is 3.202843e-21 and f(xk) is 0.000000e+00.
+
+For iteration 8 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 9 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 10 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+
+
+
+Fixed point method for x-arctan(x).
+The first guess for x0 = -5 gives x1=g(x0), x1 = -3.626599e+00
+For iteration 1 xk is -3.626599e+00 and f(xk) is -2.324857e+00.
+
+For iteration 2 xk is -2.324857e+00 and f(xk) is -1.160272e+00.
+
+For iteration 3 xk is -1.160272e+00 and f(xk) is -3.008189e-01.
+
+For iteration 4 xk is -3.008189e-01 and f(xk) is -8.610991e-03.
+
+For iteration 5 xk is -8.610991e-03 and f(xk) is -2.128231e-07.
+
+For iteration 6 xk is -2.128231e-07 and f(xk) is -3.202843e-21.
+
+For iteration 7 xk is -3.202843e-21 and f(xk) is 0.000000e+00.
+
+For iteration 8 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 9 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 10 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+
+
+
+Fixed point method for x-arctan(x).
+The first guess for x0 = 1 gives x1=g(x0), x1 = 2.146018e-01
+For iteration 1 xk is 2.146018e-01 and f(xk) is 3.206279e-03.
+
+For iteration 2 xk is 3.206279e-03 and f(xk) is 1.098702e-08.
+
+For iteration 3 xk is 1.098702e-08 and f(xk) is 0.000000e+00.
+
+For iteration 4 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 5 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 6 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 7 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 8 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 9 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 10 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+
+
+
+Fixed point method for x-arctan(x).
+The first guess for x0 = -1 gives x1=g(x0), x1 = -2.146018e-01
+For iteration 1 xk is -2.146018e-01 and f(xk) is -3.206279e-03.
+
+For iteration 2 xk is -3.206279e-03 and f(xk) is -1.098702e-08.
+
+For iteration 3 xk is -1.098702e-08 and f(xk) is 0.000000e+00.
+
+For iteration 4 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 5 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 6 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 7 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 8 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 9 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 10 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+
+
+
+Fixed point method for x-arctan(x).
+The first guess for x0 = 1.000000e-01 gives x1=g(x0), x1 = 3.313475e-04
+For iteration 1 xk is 3.313475e-04 and f(xk) is 1.212634e-11.
+
+For iteration 2 xk is 1.212634e-11 and f(xk) is 0.000000e+00.
+
+For iteration 3 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 4 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 5 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 6 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 7 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 8 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 9 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+For iteration 10 xk is 0.000000e+00 and f(xk) is 0.000000e+00.
+
+>> 
